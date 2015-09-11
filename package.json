@@ -1,6 +1,6 @@
 {
   "name": "catchup",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Graceful error handling. Because core `domain` module is deprecated. This share almost the same API.",
   "repository": "tunnckoCore/catchup",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
