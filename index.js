@@ -14,7 +14,7 @@ function Catchup () {
     return new Catchup()
   }
   Dual.call(this)
-
+  this.errored = false
   process.once('newListener', function (name) {
     this.removeAllListeners(name)
   })
@@ -31,10 +31,12 @@ Catchup.prototype.run = function (fn) {
   try {
     ret = fn.apply(this, arguments)
   } catch (err) {
+    this.errored = true
     return this.emit('error', err)
   }
 
   process.once('uncaughtException', function onError (err) {
+    this.errored = true
     this.emit('error', err)
   }.bind(this))
 

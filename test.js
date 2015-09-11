@@ -20,6 +20,7 @@ test('should handle basic errors', function (done) {
     test.ifError(!err)
     test.ok(err instanceof Error)
     test.equal(err.message, 'foo bar')
+    test.equal(domain.errored, true)
     done()
   })
   domain.run(function () {
@@ -32,6 +33,7 @@ test('should handle ENOENT errors', function (done) {
   domain.once('error', function (err) {
     test.ok(err instanceof Error)
     test.equal(err.code, 'ENOENT')
+    test.equal(domain.errored, true)
     done()
   })
   domain.run(function () {
@@ -45,5 +47,6 @@ test('should have static `.create` method', function (done) {
     return 'foo bar baz qux'
   })
   test.equal(res, 'foo bar baz qux')
+  test.equal(domain.errored, false)
   done()
 })
