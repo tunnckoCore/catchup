@@ -10,7 +10,7 @@
     "test": "standard && node test.js"
   },
   "dependencies": {
-    "dual-emitter": "^0.7.0"
+    "component-emitter": "^1.2.0"
   },
   "devDependencies": {
     "assertit": "^0.1.0"

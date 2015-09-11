@@ -7,19 +7,21 @@
 
 'use strict'
 
-var Dual = require('dual-emitter')
+var util = require('util')
+var Emitter = require('component-emitter')
 
 function Catchup () {
   if (!(this instanceof Catchup)) {
     return new Catchup()
   }
-  Dual.call(this)
+  Emitter.call(this)
   this.errored = false
   process.once('newListener', function (name) {
     this.removeAllListeners(name)
   })
 }
-Dual.extend(Catchup)
+
+util.inherits(Catchup, Emitter)
 
 Catchup.create = function () {
   return new Catchup()
