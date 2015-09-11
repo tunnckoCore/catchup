@@ -1,6 +1,6 @@
 # [catchup][author-www-url] [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] 
 
-> Graceful error handling.
+> Graceful error handling. Because core [domain](https://nodejs.org/api/domain.html) module is deprecated. Shares almost the same API.
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
@@ -14,9 +14,27 @@ npm i catchup --save
 ## Usage
 > For more use-cases see the [tests](./test.js)
 
+
 ```js
-var catchup = require('catchup')
+var fs = require('fs')
+var domain = require('catchup').create()
+
+domain.once('error', function (err) {
+  console.log('central error handling, ftw!', err)
+})
+domain.run(function () {
+  fs.createReadStream('not_existing_file')
+})
 ```
+
+
+## Related
+- [benz](https://github.com/tunnckocore/benz): Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises, observables, child processes and streams. Can power applications that need to have plugins. Useful for creating task, test and bench runners.
+- [dush](https://github.com/tunnckocore/dush): Minimalist 1.5kb event delegation for the browser (IE8+) and nodejs.
+- [hybridify](https://github.com/hybridables/hybridify): Building hybrid APIs. You can use both callback and promise in same time.  Like `asyncFn(name, cb).then().catch()`
+- [is-emitter](https://github.com/tunnckocore/is-emitter): Check that given value is EventEmitter, not so strict as `is-node-emitter`.
+- [merz](https://github.com/tunnckocore/merz): Wrapper to handle completion and errors of sync and async functions, promises, generators, streams, observables and child processes.
+- [vez](https://github.com/tunnckocore/vez): Middleware composition at new level. Ultimate alternative to `ware`, `plugins`, `koa-compose` and `composition` packages. Allows you to use callbacks, promises, generators and async/await functions as middlewares.
 
 
 ## Contributing

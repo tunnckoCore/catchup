@@ -10,6 +10,10 @@
 var util = require('util')
 var Emitter = require('component-emitter')
 
+/**
+ * Singleton `Catchup` constructor.
+ */
+
 function Catchup () {
   if (!(this instanceof Catchup)) {
     return new Catchup()
@@ -26,6 +30,15 @@ util.inherits(Catchup, Emitter)
 Catchup.create = function () {
   return new Catchup()
 }
+
+/**
+ * Function to run and handle thrown errors from it.
+ *
+ * @name  run
+ * @param  {Function} `fn`
+ * @return {Mixed} any value that is returned from it
+ * @api public
+ */
 
 Catchup.prototype.run = function (fn) {
   var ret = null
@@ -46,7 +59,7 @@ Catchup.prototype.run = function (fn) {
 }
 
 /**
- * Expose `Catchtup`
+ * Expose `Catchtup`.
  */
 
 module.exports = Catchup
