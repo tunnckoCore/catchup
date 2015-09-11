@@ -18,5 +18,23 @@
   "files": [
     "index.js"
   ],
-  "keywords": []
+  "keywords": [
+    "catch",
+    "core",
+    "domain",
+    "domains",
+    "emitter",
+    "err",
+    "error",
+    "events",
+    "exception",
+    "exceptions",
+    "grace",
+    "graceful",
+    "handle",
+    "handling",
+    "result",
+    "try",
+    "uncaught"
+  ]
 }
